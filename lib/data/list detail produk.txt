@@ -1,0 +1,30 @@
+assetsPath: "assets/images/Produk/Lip Cream Matte.jpg",
+nama: "Lip Cream Matte",
+harga: "Rp.65.000,00",
+deskripsi: "Bla Bla Bla",
+bpom: "NA 18211302201"
+
+assetsPath: "assets/images/Produk/Hair Living Serum.jpg",
+nama: "Hair Living Shampoo",
+harga: "Rp.80.000,00",
+deskripsi: "Shampoo yang berguna untuk merawat rambut agar tetap kuat dan sehat. Membersihkan kulit kepala dari minyak, dan kotoran yang menempel. Menyingkirkan penumpukan sel kulit mati dan ketombe. Menjadikan rambut terasa bersih, harum dan gampang di atur.",
+bpom: "NA 18211001799"
+
+assetsPath: "assets/images/Produk/Hair Living Serum.jpg",
+nama: "Hair Living Serum",
+harga: "Rp.75.000,00",
+deskripsi: "Serum rambut yang berguna untuk merawat rambut agar tetap kuat dan sehat, menjadikan rambut lebih tebal dan mudah di atur.",
+bpom: "NA 18211001800"
+
+assetsPath: "assets/images/Produk/Lip Gloss Serum.jpg",
+nama: "Lip Gloss Serum",
+harga: "Rp.75.000,00",
+deskripsi: "Bla bla bla",
+bpom: "NA 18211302114"
+
+assetsPath: "assets/images/Produk/Whitening Body Lotion.jpg",
+nama: "Whitening Body Lotion",
+harga: "Rp.110.000,00",
+deskripsi: "Lotion ini dapat membantu kulit nanpak lebih cerah dan melindungi kulit dari UV filter. melindungi kulit dari pengaruh buruk sinar matahari, serta membantu merawat dan menjaga kelembaban kulit agar tetap sehat.",
+bpom: "NA 18210111617"
+
