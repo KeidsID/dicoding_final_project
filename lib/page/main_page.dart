@@ -8,8 +8,8 @@ import '../footer_widget.dart';
 import '../page/detail_page.dart';
 
 import '../data/highlight.dart';
-import '../data/produk_list.dart';
-import '../data/testimoni.dart';
+import '../data/product_list.dart';
+import '../data/testimonial.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -22,27 +22,27 @@ class _MainPage extends State<MainPage> {
   int _currentCarouselIndex = 0;
   int _currentCarouselIndex2 = 0;
 
-  final carouselCtrler = CarouselController();
-  final scrollController = ScrollController();
-  final carouselCtrler2 = CarouselController();
+  final _carouselCtrler = CarouselController();
+  final _scrollController = ScrollController();
+  final _carouselCtrler2 = CarouselController();
 
-  final scrollCtrlerForBtn = ScrollController();
-  bool showbtn = false;
+  final _scrollCtrlerForBtn = ScrollController();
+  bool _showbtn = false;
 
   @override
   void initState() {
-    scrollCtrlerForBtn.addListener(() {
+    _scrollCtrlerForBtn.addListener(() {
       //scroll listener
       double showoffset =
           10.0; //Back to top botton will show on scroll offset 10.0
 
-      if (scrollCtrlerForBtn.offset > showoffset) {
-        showbtn = true;
+      if (_scrollCtrlerForBtn.offset > showoffset) {
+        _showbtn = true;
         setState(() {
           //update state
         });
       } else {
-        showbtn = false;
+        _showbtn = false;
         setState(() {
           //update state
         });
@@ -53,7 +53,7 @@ class _MainPage extends State<MainPage> {
 
   @override
   void dispose() {
-    scrollController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -80,7 +80,7 @@ class _MainPage extends State<MainPage> {
                 padding: const EdgeInsets.all(16.0),
                 child: IconButton(
                   onPressed: () {
-                    scrollCtrlerForBtn.animateTo(
+                    _scrollCtrlerForBtn.animateTo(
                         9999, // scroll offset to go (0 => top, >0 => getting down)
                         duration: const Duration(
                             milliseconds: 500), // duration of scroll
@@ -95,9 +95,9 @@ class _MainPage extends State<MainPage> {
                 AppBarActionButton(
                   margin: appBarActionMargin,
                   onPressed: () {
-                    Navigator.popAndPushNamed(context, '/produkList');
+                    Navigator.popAndPushNamed(context, '/productList');
                   },
-                  text: 'Daftar Produk',
+                  text: 'Daftar Product',
                 ),
                 AppBarActionButton(
                     margin: appBarActionMargin,
@@ -108,7 +108,7 @@ class _MainPage extends State<MainPage> {
                 AppBarActionButton(
                   margin: appBarActionMargin,
                   onPressed: () {
-                    scrollCtrlerForBtn.animateTo(
+                    _scrollCtrlerForBtn.animateTo(
                         9999, // scroll offset to go (0 => top, >0 => getting down)
                         duration: const Duration(
                             milliseconds: 500), // duration of scroll
@@ -123,9 +123,9 @@ class _MainPage extends State<MainPage> {
                 AppBarActionButton(
                   margin: appBarActionMargin,
                   onPressed: () {
-                    Navigator.popAndPushNamed(context, '/produkList');
+                    Navigator.popAndPushNamed(context, '/productList');
                   },
-                  text: 'Daftar Produk',
+                  text: 'Daftar Product',
                 ),
                 AppBarActionButton(
                     margin: appBarActionMargin,
@@ -136,7 +136,7 @@ class _MainPage extends State<MainPage> {
                 AppBarActionButton(
                   margin: appBarActionMargin,
                   onPressed: () {
-                    scrollCtrlerForBtn.animateTo(
+                    _scrollCtrlerForBtn.animateTo(
                         9999, // scroll offset to go (0 => top, >0 => getting down)
                         duration: const Duration(
                             milliseconds: 500), // duration of scroll
@@ -156,7 +156,7 @@ class _MainPage extends State<MainPage> {
             : const EdgeInsets.symmetric(vertical: 16, horizontal: 88);
     double produkListDisplayContainerHeight = (isTabWidth) ? 350 : 326;
     var produkListDisplay = (isTabWidth)
-        ? ProdukListDisplayMobile(scrollController: scrollController)
+        ? ProdukListDisplayMobile(scrollController: _scrollController)
         : const ProdukListDisplayWeb();
 
     // Scaffold body footer
@@ -205,7 +205,7 @@ class _MainPage extends State<MainPage> {
         toolbarHeight: 75,
       ),
       body: SingleChildScrollView(
-        controller: scrollCtrlerForBtn,
+        controller: _scrollCtrlerForBtn,
         child: Column(children: [
           // Highlight
           Container(
@@ -233,7 +233,7 @@ class _MainPage extends State<MainPage> {
                       ),
                     )
                     .toList(),
-                carouselController: carouselCtrler,
+                carouselController: _carouselCtrler,
                 options: CarouselOptions(
                   height: screenSize.height - (screenSize.height / 4),
                   viewportFraction: 1.0,
@@ -250,10 +250,10 @@ class _MainPage extends State<MainPage> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: produkList.asMap().entries.map((produkListMap) {
+                children: productList.asMap().entries.map((produkListMap) {
                   return GestureDetector(
                     onTap: () =>
-                        carouselCtrler.animateToPage(produkListMap.key),
+                        _carouselCtrler.animateToPage(produkListMap.key),
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -276,8 +276,8 @@ class _MainPage extends State<MainPage> {
           ),
           const SizedBox(height: 16),
 
-          // Produk Hyza
-          const HeadingContainer('Produk Hyza'),
+          // Product Hyza
+          const HeadingContainer('Product Hyza'),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
@@ -292,7 +292,7 @@ class _MainPage extends State<MainPage> {
           const SizedBox(height: 16),
 
           // Kenapa Pilih Hyza
-          const HeadingContainer('Kelebihan Produk Hyza'),
+          const HeadingContainer('Kelebihan Product Hyza'),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
             decoration: BoxDecoration(
@@ -395,7 +395,7 @@ class _MainPage extends State<MainPage> {
             margin: mainContainerMargin,
             child: Column(children: [
               CarouselSlider(
-                items: testimoniList
+                items: testimonialList
                     .map(
                       (testimoniObj) => Container(
                         margin: const EdgeInsets.only(top: 16, bottom: 8),
@@ -419,17 +419,17 @@ class _MainPage extends State<MainPage> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            '"${testimoniObj.testimoni}"',
+                            '"${testimoniObj.testimonial}"',
                             style: const TextStyle(fontSize: 16),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 8),
-                          Text("- ${testimoniObj.nama} -"),
+                          Text("- ${testimoniObj.name} -"),
                         ]),
                       ),
                     )
                     .toList(),
-                carouselController: carouselCtrler2,
+                carouselController: _carouselCtrler2,
                 options: CarouselOptions(
                   height: 300,
                   viewportFraction: 1,
@@ -443,10 +443,10 @@ class _MainPage extends State<MainPage> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: testimoniList.asMap().entries.map((testimoniListMap) {
+                children: testimonialList.asMap().entries.map((testimoniListMap) {
                   return GestureDetector(
                     onTap: () =>
-                        carouselCtrler2.animateToPage(testimoniListMap.key),
+                        _carouselCtrler2.animateToPage(testimoniListMap.key),
                     child: Container(
                       width: 16.0,
                       height: 16.0,
@@ -472,12 +472,12 @@ class _MainPage extends State<MainPage> {
       ),
       floatingActionButton: AnimatedOpacity(
         duration: const Duration(milliseconds: 100),
-        opacity: showbtn ? 1.0 : 0.0,
+        opacity: _showbtn ? 1.0 : 0.0,
         child: FloatingActionButton(
           backgroundColor: const Color.fromRGBO(235, 192, 128, 1),
           hoverColor: const Color.fromRGBO(215, 172, 108, 1),
           onPressed: () {
-            scrollCtrlerForBtn.animateTo(
+            _scrollCtrlerForBtn.animateTo(
                 0, // scroll offset to go (0 => top, >0 => getting down)
                 duration:
                     const Duration(milliseconds: 500), // duration of scroll
@@ -526,9 +526,9 @@ class _MainPage extends State<MainPage> {
               )),
           ListTile(
             onTap: () {
-              Navigator.popAndPushNamed(context, '/produkList');
+              Navigator.popAndPushNamed(context, '/productList');
             },
-            title: const Text('Daftar Produk'),
+            title: const Text('Daftar Product'),
           ),
           ListTile(
             onTap: () {
@@ -539,7 +539,7 @@ class _MainPage extends State<MainPage> {
           ListTile(
             onTap: () {
               Navigator.of(context).pop();
-              scrollCtrlerForBtn.animateTo(
+              _scrollCtrlerForBtn.animateTo(
                 2000, // scroll offset to go (0 => top, >0 => getting down)
                 duration:
                     const Duration(milliseconds: 500), // duration of scroll
@@ -554,11 +554,11 @@ class _MainPage extends State<MainPage> {
   }
 }
 
-// Produk List Display Container
+// Product List Display Container
 class ProdukListContainer extends StatelessWidget {
-  final Produk produk;
+  final Product product;
 
-  const ProdukListContainer(this.produk, {Key? key}) : super(key: key);
+  const ProdukListContainer(this.product, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -575,7 +575,7 @@ class ProdukListContainer extends StatelessWidget {
           child: InkWell(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DetailPage(produk);
+                return DetailPage(product);
               }));
             },
             child: Padding(
@@ -589,11 +589,11 @@ class ProdukListContainer extends StatelessWidget {
                   Expanded(
                     child: Stack(children: [
                       Hero(
-                        tag: produk.heroTag,
+                        tag: product.heroTag,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: Image.asset(
-                            produk.assetsPath,
+                            product.assetsPath,
                             width: 200,
                             fit: BoxFit.cover,
                           ),
@@ -632,7 +632,7 @@ class ProdukListContainer extends StatelessWidget {
                             ),
                             margin: const EdgeInsets.only(bottom: 8),
                             child: Text(
-                              produk.harga,
+                              product.price,
                               style: const TextStyle(color: Colors.black),
                             ),
                           )
@@ -642,7 +642,7 @@ class ProdukListContainer extends StatelessWidget {
                   ),
 
                   // Nama
-                  Text(produk.nama,
+                  Text(product.name,
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -677,10 +677,10 @@ class ProdukListDisplayMobile extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           controller: scrollController,
           children: [
-            ProdukListContainer(produkList[0]),
-            ProdukListContainer(produkList[1]),
-            ProdukListContainer(produkList[2]),
-            ProdukListContainer(produkList[3]),
+            ProdukListContainer(productList[0]),
+            ProdukListContainer(productList[1]),
+            ProdukListContainer(productList[2]),
+            ProdukListContainer(productList[3]),
             Container(
               padding: const EdgeInsets.all(8),
               width: 200,
@@ -695,12 +695,12 @@ class ProdukListDisplayMobile extends StatelessWidget {
                     child: IconButton(
                         color: Colors.white,
                         onPressed: () {
-                          Navigator.pushNamed(context, '/produkList');
+                          Navigator.pushNamed(context, '/productList');
                         },
                         icon: const Icon(Icons.arrow_forward)),
                   ),
                   const SizedBox(height: 8),
-                  const Text('Lihat produk lainnya'),
+                  const Text('Lihat product lainnya'),
                 ],
               ),
             ),
@@ -717,9 +717,9 @@ class ProdukListDisplayWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      ProdukListContainer(produkList[0]),
-      ProdukListContainer(produkList[1]),
-      ProdukListContainer(produkList[2]),
+      ProdukListContainer(productList[0]),
+      ProdukListContainer(productList[1]),
+      ProdukListContainer(productList[2]),
       Container(
         padding: const EdgeInsets.all(8),
         width: 200,
@@ -734,12 +734,12 @@ class ProdukListDisplayWeb extends StatelessWidget {
               child: IconButton(
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/produkList');
+                    Navigator.pushNamed(context, '/productList');
                   },
                   icon: const Icon(Icons.arrow_forward)),
             ),
             const SizedBox(height: 8),
-            const Text('Lihat produk lainnya'),
+            const Text('Lihat product lainnya'),
           ],
         ),
       ),

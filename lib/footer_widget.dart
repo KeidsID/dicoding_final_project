@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/kontak.dart';
+import 'data/contact.dart';
 
 String aboutHyza =
     'HYZA Adalah salah satu Produk Perawatan dan kecantikan yang bergerak di bidang kosmetik dan skincare yang telah bernotifikasi BPOM. \n\nHYZA memiliki sudut pandang yang berbeda dengan brand pada umumnya, kecantikan dan kesehatan menjadi prioritas yang mengedepankan kualitas produk dan harga yang terjangkau serta manajemen yang dikelolah oleh tenaga ahli, Propesional dan terlatih di bidangnya.';
@@ -58,13 +58,13 @@ class FooterWidgetMobile extends StatelessWidget {
             Row(children: [
               const Icon(Icons.whatsapp),
               const SizedBox(width: 8),
-              Text('+62 ${kontak.nomorHp}'),
+              Text('+62 ${contact.phoneNumber}'),
             ]),
             const SizedBox(height: 8),
             Row(children: [
               const Icon(Icons.email),
               const SizedBox(width: 8),
-              Text(kontak.email),
+              Text(contact.email),
             ]),
             const SizedBox(height: 8),
             Row(children: [
@@ -74,8 +74,9 @@ class FooterWidgetMobile extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(kontak.jlnDesa),
-                Text(kontak.kecKab + kontak.provinsi),
+                Text('${contact.street}, ${contact.wardOrVillage}'),
+                Text(
+                    '${contact.district}, ${contact.cityOrRegency}, ${contact.province}'),
               ]),
             ]),
           ]),
@@ -154,13 +155,13 @@ class FooterWidgetWeb extends StatelessWidget {
                   Row(children: [
                     const Icon(Icons.whatsapp),
                     const SizedBox(width: 8),
-                    Text('+62 ${kontak.nomorHp}'),
+                    Text('+62 ${contact.phoneNumber}'),
                   ]),
                   const SizedBox(height: 8),
                   Row(children: [
                     const Icon(Icons.email),
                     const SizedBox(width: 8),
-                    Text(kontak.email),
+                    Text(contact.email),
                   ]),
                   const SizedBox(height: 8),
                   Row(children: [
@@ -172,8 +173,9 @@ class FooterWidgetWeb extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(kontak.jlnDesa),
-                        Text(kontak.kecKab + kontak.provinsi),
+                        Text('${contact.street}, ${contact.wardOrVillage}'),
+                        Text(
+                            '${contact.district}, ${contact.cityOrRegency}, ${contact.province}'),
                       ],
                     ),
                   ]),

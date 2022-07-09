@@ -5,7 +5,7 @@ import '../footer_widget.dart';
 
 import '../page/detail_page.dart';
 
-import '../data/produk_list.dart';
+import '../data/product_list.dart';
 
 class ProdukListPage extends StatefulWidget {
   const ProdukListPage({Key? key}) : super(key: key);
@@ -188,7 +188,7 @@ class _ProdukListPageState extends State<ProdukListPage> {
       body: SingleChildScrollView(
         controller: scrollCtrlerForBtn,
         child: Column(children: [
-          // Produk List
+          // Product List
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
@@ -202,7 +202,7 @@ class _ProdukListPageState extends State<ProdukListPage> {
               alignment: WrapAlignment.spaceEvenly,
               spacing: 8,
               runSpacing: 16,
-              children: produkList
+              children: productList
                   .map((produkObj) => ProdukContainer(produkObj))
                   .toList(),
             ),
@@ -297,9 +297,9 @@ class _ProdukListPageState extends State<ProdukListPage> {
 }
 
 class ProdukContainer extends StatelessWidget {
-  final Produk produk;
+  final Product product;
 
-  const ProdukContainer(this.produk, {Key? key}) : super(key: key);
+  const ProdukContainer(this.product, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -314,7 +314,7 @@ class ProdukContainer extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return DetailPage(produk);
+              return DetailPage(product);
             }));
           },
           child: Padding(
@@ -328,11 +328,11 @@ class ProdukContainer extends StatelessWidget {
                 Expanded(
                   child: Stack(children: [
                     Hero(
-                      tag: produk.heroTag,
+                      tag: product.heroTag,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
-                          produk.assetsPath,
+                          product.assetsPath,
                           width: 200,
                           fit: BoxFit.cover,
                         ),
@@ -371,24 +371,28 @@ class ProdukContainer extends StatelessWidget {
                           ),
                           margin: const EdgeInsets.only(bottom: 8),
                           child: Text(
-                            produk.harga,
+                            product.price,
                             style: const TextStyle(color: Colors.black),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ]),
                 ),
 
                 // Nama
-                Text(produk.nama,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    )),
+                Text(
+                  product.name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                const Text('Tekan untuk detail',
-                    style: TextStyle(color: Colors.white60, fontSize: 12)),
+                const Text(
+                  'Tekan untuk detail',
+                  style: TextStyle(color: Colors.white60, fontSize: 12),
+                ),
               ],
             ),
           ),

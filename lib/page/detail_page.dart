@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 import '../heading_widget.dart';
 import '../footer_widget.dart';
 
-import '../data/produk_list.dart';
+import '../data/product_list.dart';
 
 class DetailPage extends StatelessWidget {
-  final Produk produk;
+  final Product product;
 
-  const DetailPage(this.produk, {Key? key}) : super(key: key);
+  const DetailPage(this.product, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints boxConstraints) {
         if (boxConstraints.maxWidth <= 600) {
-          return DetailPageMobile(produk);
+          return DetailPageMobile(product);
         } else {
-          return DetailPageWeb(produk);
+          return DetailPageWeb(product);
         }
       },
     );
@@ -26,9 +26,9 @@ class DetailPage extends StatelessWidget {
 }
 
 class DetailPageMobile extends StatelessWidget {
-  final Produk produk;
+  final Product product;
 
-  const DetailPageMobile(this.produk, {Key? key}) : super(key: key);
+  const DetailPageMobile(this.product, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +62,9 @@ class DetailPageMobile extends StatelessWidget {
                   width: screenSize.width,
                   height: screenSize.height - (screenSize.height / 6),
                   child: Hero(
-                    tag: produk.heroTag,
+                    tag: product.heroTag,
                     child: Image.asset(
-                      produk.assetsPath,
+                      product.assetsPath,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -116,7 +116,7 @@ class DetailPageMobile extends StatelessWidget {
                     ),
                     margin: const EdgeInsets.all(14.0),
                     child: Text(
-                      produk.harga,
+                      product.price,
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -129,19 +129,19 @@ class DetailPageMobile extends StatelessWidget {
             const SizedBox(height: 16),
 
             // Deskripsi + BPOM
-            HeadingContainer(produk.nama),
+            HeadingContainer(product.name),
             const SizedBox(height: 16),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                produk.deskripsi,
+                product.description,
                 style: const TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'No. BPOM: ${produk.bpom}',
+              'No. BPOM: ${product.bpom}',
               style: TextStyle(
                 color: Colors.white.withOpacity(0.5),
               ),
@@ -163,7 +163,7 @@ class DetailPageMobile extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                produk.howToUse,
+                product.howToUse,
                 style: const TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,
               ),
@@ -180,9 +180,9 @@ class DetailPageMobile extends StatelessWidget {
 }
 
 class DetailPageWeb extends StatelessWidget {
-  final Produk produk;
+  final Product product;
 
-  const DetailPageWeb(this.produk, {Key? key}) : super(key: key);
+  const DetailPageWeb(this.product, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -214,7 +214,7 @@ class DetailPageWeb extends StatelessWidget {
             // product name
             Padding(
               padding: mainContainerMargin,
-              child: HeadingContainer(produk.nama),
+              child: HeadingContainer(product.name),
             ),
 
             // Image with description
@@ -225,11 +225,11 @@ class DetailPageWeb extends StatelessWidget {
                 // Image
                 Expanded(
                   child: Hero(
-                    tag: produk.heroTag,
+                    tag: product.heroTag,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.asset(
-                        produk.assetsPath,
+                        product.assetsPath,
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -253,7 +253,7 @@ class DetailPageWeb extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          produk.harga,
+                          product.price,
                           style: const TextStyle(
                             color: Colors.black,
                             fontSize: 18,
@@ -270,10 +270,10 @@ class DetailPageWeb extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(produk.deskripsi),
+                            Text(product.description),
                             const SizedBox(height: 4),
                             Text(
-                              'No. BPOM: ${produk.bpom}',
+                              'No. BPOM: ${product.bpom}',
                               style: TextStyle(
                                   color: Colors.white.withOpacity(0.5)),
                             ),
@@ -297,7 +297,7 @@ class DetailPageWeb extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 4),
-                            Text(produk.howToUse),
+                            Text(product.howToUse),
                           ],
                         ),
                       ),

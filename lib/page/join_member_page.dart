@@ -84,7 +84,7 @@ class _MemberPageState extends State<MemberPage> {
                 AppBarActionButton(
                   margin: appBarActionMargin,
                   onPressed: () {
-                    Navigator.popAndPushNamed(context, '/produkList');
+                    Navigator.popAndPushNamed(context, '/productList');
                   },
                   text: 'Daftar Produk',
                 ),
@@ -113,7 +113,7 @@ class _MemberPageState extends State<MemberPage> {
                 AppBarActionButton(
                   margin: appBarActionMargin,
                   onPressed: () {
-                    Navigator.popAndPushNamed(context, '/produkList');
+                    Navigator.popAndPushNamed(context, '/productList');
                   },
                   text: 'Daftar Produk',
                 ),
@@ -380,7 +380,7 @@ class _MemberPageState extends State<MemberPage> {
           ),
           ListTile(
             onTap: () {
-              Navigator.popAndPushNamed(context, '/produkList');
+              Navigator.popAndPushNamed(context, '/productList');
             },
             title: const Text('Daftar Produk'),
           ),

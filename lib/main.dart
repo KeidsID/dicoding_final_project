@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../page/main_page.dart';
-import '../page/produk_list_page.dart';
+import 'page/product_list_page.dart';
 import '../page/join_member_page.dart';
 
 void main(List<String> args) => runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/': (context) => const MainPage(),
-        '/produkList': (context) => const ProdukListPage(),
+        '/productList': (context) => const ProdukListPage(),
         '/joinMember': (context) => const MemberPage(),
       },
       initialRoute: '/',
